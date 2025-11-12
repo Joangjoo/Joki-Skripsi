@@ -31,6 +31,10 @@
                 </button>
             </div>
             <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
+                <a href="{{ route('dashboard.index') }}"
+                    class="block px-3 py-2 rounded-md hover:bg-amber-700 transition {{ request()->routeIs('dashboard.*') ? 'bg-amber-700' : '' }}">
+                    Dashboard
+                </a>
                 <a href="{{ route('coffee.index') }}"
                     class="block px-3 py-2 rounded-md hover:bg-amber-700 transition {{ request()->routeIs('coffee.*') ? 'bg-amber-700' : '' }}">
                     Alternatif

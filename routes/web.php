@@ -6,10 +6,15 @@ use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\SubCriteriaController;
 use App\Http\Controllers\CoffeeAlternativeController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return redirect()->route('coffee.index');
 });
+
+
+// Dashboard Routes
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 // Kriteria Routes
 Route::prefix('criteria')->name('criteria.')->group(function () {

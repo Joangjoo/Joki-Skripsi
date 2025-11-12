@@ -16,8 +16,8 @@ class CoffeeAlternativeController extends Controller
 
     public function create()
     {
-        
-        return view('coffee.create', );
+        $coffees = CoffeeAlternative::all();
+        return view('coffee.create', compact('coffees') );
     }
 
     public function store(Request $request)
@@ -27,8 +27,9 @@ class CoffeeAlternativeController extends Controller
             'description' => 'nullable'
         ]);
 
-        CoffeeAlternative::create($validated);
-        return redirect()->route('coffee.index')->with('success', 'Alternatif biji kopi berhasil ditambahkan');
+        $coffee = CoffeeAlternative::create($validated);
+        return redirect()->route('evaluation.edit', $coffee)
+        ->with('success', 'Alternatif biji kopi berhasil ditambahkan, silakan lakukan penilaian.');
     }
 
     public function destroy(CoffeeAlternative $coffee)

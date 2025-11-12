@@ -56,7 +56,7 @@
             </div>
 
             <div class="mt-6 text-center">
-                <a href="{{ route('saw.result') }}"
+                <a href="{{ route('dashboard.index') }}"
                     class="inline-block bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 text-lg font-semibold">
                     🎯 Lihat Hasil Perhitungan SAW
                 </a>
