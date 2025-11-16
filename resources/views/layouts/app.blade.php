@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Sistem Pengambilan Keputusan Biji Kopi - SAW' }}</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -74,7 +75,7 @@
 
             {{-- Content --}}
             <main class="flex-1 p-6 overflow-y-auto">
-                @if (session('success'))
+                {{-- @if (session('success'))
                     <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
                         {{ session('success') }}
                     </div>
@@ -88,12 +89,22 @@
                             @endforeach
                         </ul>
                     </div>
-                @endif
+                @endif --}}
 
                 @yield('content')
             </main>
         </div>
     </div>
+
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+        });
+    </script>
 
     <script>
         // Overlay + toggle sidebar (versi mobile)
@@ -116,6 +127,8 @@
             });
         });
     </script>
+
+    @stack('scripts')
 </body>
 
 </html>

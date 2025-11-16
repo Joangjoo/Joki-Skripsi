@@ -19,9 +19,36 @@
                     <option value="benefit">Benefit</option>
                     <option value="cost">Cost</option>
                 </select>
-                <button type="submit" class="bg-amber-600 text-white rounded px-4 py-2 hover:bg-amber-700">Tambah</button>
+                <button type="submit" class="bg-amber-600 text-white rounded px-4 py-2 hover:bg-amber-700">
+                    Tambah
+                </button>
+
+
             </form>
         </div>
+
+        <div class="bg-white rounded-lg shadow-md p-4 mb-6">
+            <h2 class="text-lg font-semibold">Status Bobot Kriteria</h2>
+            <p class="mt-2">
+                Total Bobot: <strong>{{ $totalWeight }}</strong>
+                <span
+                    class="{{ $totalWeight < 1 ? 'text-red-600' : ($totalWeight > 1 ? 'text-red-600' : 'text-green-600') }}">
+                    ({{ $totalWeight == 1 ? 'Valid' : 'Tidak Valid' }})
+                </span>
+            </p>
+            <p>Jumlah Kriteria: <strong>{{ $countCriteria }}</strong></p>
+
+            @if ($totalWeight < 1)
+                <p class="text-red-600 mt-2">
+                    Total bobot masih kurang: {{ number_format(1 - $totalWeight, 2) }} lagi.
+                </p>
+            @elseif ($totalWeight > 1)
+                <p class="text-red-600 mt-2">
+                    Total bobot kelebihan: {{ number_format($totalWeight - 1, 2) }}.
+                </p>
+            @endif
+        </div>
+
 
         {{-- Daftar Kriteria --}}
         @foreach ($criteria as $criterion)
@@ -151,6 +178,7 @@
         @endif
     </div>
 
+
     {{-- Script Modal --}}
     <script>
         document.querySelectorAll('[data-modal-target]').forEach(button => {
@@ -168,3 +196,34 @@
         }
     </script>
 @endsection
+@push('scripts')
+    <script>
+        @if (session('success'))
+            Toast.fire({
+                icon: "success",
+                title: "{{ session('success') }}"
+            });
+        @endif
+
+        @if (session('error'))
+            Toast.fire({
+                icon: "error",
+                title: "{{ session('error') }}"
+            });
+        @endif
+
+        @if (session('warning'))
+            Toast.fire({
+                icon: "warning",
+                title: "{{ session('warning') }}"
+            });
+        @endif
+
+        @if (session('info'))
+            Toast.fire({
+                icon: "info",
+                title: "{{ session('info') }}"
+            });
+        @endif
+    </script>
+@endpush
