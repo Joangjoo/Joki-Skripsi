@@ -49,9 +49,19 @@
                     Penilaian
                 </a>
                 <a href="{{ route('saw.result') }}"
-                    class="block px-3 py-2 rounded-md hover:bg-amber-700 transition {{ request()->routeIs('saw.*') ? 'bg-amber-700' : '' }}">
+                    class="block px-3 py-2 rounded-md hover:bg-amber-700 transition
+    {{ request()->routeIs('saw.result') ? 'bg-amber-700' : '' }}">
                     Hasil SAW
                 </a>
+
+                <a href="{{ route('saw.chart') }}"
+                    class="block px-3 py-2 rounded-md hover:bg-amber-700 transition
+    {{ request()->routeIs('saw.chart') ? 'bg-amber-700' : '' }}">
+                    Chart Hasil SAW
+                </a>
+
+
+
             </nav>
         </aside>
 
@@ -128,6 +138,7 @@
         });
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @stack('scripts')
 </body>
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\SubCriteriaController;
 use App\Http\Controllers\CoffeeAlternativeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SawChartController;
 
 Route::get('/', function () {
     return redirect()->route('coffee.index');
@@ -46,3 +47,7 @@ Route::prefix('evaluation')->name('evaluation.')->group(function () {
 
 // SAW Result
 Route::get('/saw-result', [SAWController::class, 'index'])->name('saw.result');
+Route::get('/chart-saw', [SawChartController::class, 'index'])
+    ->name('saw.chart');
+
+

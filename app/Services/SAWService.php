@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Models\CoffeeAlternative;
 use App\Models\Criteria;
+use App\Models\HasilSaw;
+
 
 class SAWService
 {
@@ -32,6 +34,19 @@ class SAWService
         foreach ($results as $index => &$result) {
             $result['rank'] = $index + 1;
         }
+
+
+        // Menambahkan Ke database
+        // HasilSaw::truncate();
+
+        // foreach ($results as $r) {
+        //     HasilSaw::create([
+        //         'alternative_id' => $r['id'],
+        //         'alternative_name' => $r['name'],
+        //         'score' => $r['score'],
+        //         'rank' => $r['rank'],
+        //     ]);
+        // }
 
         return $results;
     }
